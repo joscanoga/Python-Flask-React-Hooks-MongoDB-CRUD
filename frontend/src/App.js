@@ -1,21 +1,22 @@
-import React from "react";
-import {BrowserRouter as router,Switch,Route} from "react-router-dom"
-import { About } from "./components/About";
-import { User } from "./components/Users";
+import{BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import {About} from './components/About'
+import { User } from './components/User';
+import {Navbar} from './components/Navbar'
 
 function App() {
   return (
-    <router>
-      <div>
-      <h1>hola mundo</h1>
-        <switch>
-          <Route path="/about" component={About}/>
-          <Route path="/" component={User}/>
-          <h1>hola mundo</h1>
-        </switch>
-      </div>
-    </router>
-  
+  <Router>
+    <Navbar></Navbar>
+    <div className='container p-4'>
+      <Routes>
+        <Route path='/About' element={<About/>}></Route>
+        <Route path='/' element={<User/>}></Route>
+      </Routes>
+
+    </div>
+  </Router>
+
+   
   );
 }
 

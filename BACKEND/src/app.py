@@ -37,7 +37,7 @@ def getUsers():
 
     return(jsonify(users))
 
-@app.route("/user/<id>", methods=["GET"])
+@app.route("/users/<id>", methods=["GET"])
 def getUser(id):
     user=db.find_one({'_id':ObjectId(id)})
     print(type(user),id)
@@ -48,12 +48,12 @@ def getUser(id):
             'password': user['password']
         }))
 
-@app.route("/user/<id>", methods=["DELETE"])
+@app.route("/users/<id>", methods=["DELETE"])
 def deleteUser(id):
     db.delete_one({'_id':ObjectId(id)})
     return(jsonify({"msg":"user delete"}))
 
-@app.route("/user/<id>", methods=["PUT"])
+@app.route("/users/<id>", methods=["PUT"])
 def updateUser(id):
     db.update_one({'_id':ObjectId(id)},{'$set':{
     'name': request.json['name'],
